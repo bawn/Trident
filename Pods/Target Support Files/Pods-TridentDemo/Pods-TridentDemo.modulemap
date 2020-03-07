@@ -1,6 +1,0 @@
-framework module Pods_TridentDemo {
-  umbrella header "Pods-TridentDemo-umbrella.h"
-
-  export *
-  module * { export * }
-}
