@@ -1,0 +1,602 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5FAAA26DB441E4432EC23D87 /* Pods_Trident.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8ADCA4A16FAE294C34A4BF7 /* Pods_Trident.framework */; };
+		8E56D10ADF73842C2E101EFE /* Pods_TridentDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B6BE6DE67E80E903DEA769 /* Pods_TridentDemo.framework */; };
+		DF19CD6D2413F27100C15B6F /* Trident.h in Headers */ = {isa = PBXBuildFile; fileRef = DF19CD6B2413F27100C15B6F /* Trident.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DF19CD792413F2A500C15B6F /* UIColor+RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF19CD742413F2A500C15B6F /* UIColor+RGB.swift */; };
+		DF19CD7A2413F2A500C15B6F /* UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF19CD752413F2A500C15B6F /* UIScrollView.swift */; };
+		DF19CD7B2413F2A500C15B6F /* ProgressViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF19CD772413F2A500C15B6F /* ProgressViewStyle.swift */; };
+		DF19CD7C2413F2A500C15B6F /* MenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF19CD782413F2A500C15B6F /* MenuItemView.swift */; };
+		DF19CD7D2413F2A500C15B6F /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF19CD732413F2A500C15B6F /* MenuView.swift */; };
+		DF19CD7E2413F2A500C15B6F /* BottomLineViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF19CD762413F2A500C15B6F /* BottomLineViewStyle.swift */; };
+		DF19CD862413F35B00C15B6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF19CD852413F35B00C15B6F /* AppDelegate.swift */; };
+		DF19CD882413F35B00C15B6F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF19CD872413F35B00C15B6F /* SceneDelegate.swift */; };
+		DF19CD8F2413F35C00C15B6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF19CD8E2413F35C00C15B6F /* Assets.xcassets */; };
+		DF19CD922413F35C00C15B6F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF19CD902413F35C00C15B6F /* LaunchScreen.storyboard */; };
+		DF19CD992413F3A600C15B6F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF19CD972413F3A600C15B6F /* ViewController.swift */; };
+		DF19CD9A2413F3A600C15B6F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF19CD982413F3A600C15B6F /* DetailViewController.swift */; };
+		DF19CDA72413F40A00C15B6F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF19CDA62413F40A00C15B6F /* Main.storyboard */; };
+		DF19CDA82413F57800C15B6F /* Trident.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF19CD682413F27100C15B6F /* Trident.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3AA7ED5C732BD881F5137142 /* Pods-Trident.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trident.debug.xcconfig"; path = "Target Support Files/Pods-Trident/Pods-Trident.debug.xcconfig"; sourceTree = "<group>"; };
+		4DC5CC6373C773E54EC2CAE7 /* Pods-Trident.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trident.release.xcconfig"; path = "Target Support Files/Pods-Trident/Pods-Trident.release.xcconfig"; sourceTree = "<group>"; };
+		56D74E28010583E5EC110C7C /* Pods-TridentDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TridentDemo.debug.xcconfig"; path = "Target Support Files/Pods-TridentDemo/Pods-TridentDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		78B6BE6DE67E80E903DEA769 /* Pods_TridentDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TridentDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8ADCA4A16FAE294C34A4BF7 /* Pods_Trident.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trident.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF19CD682413F27100C15B6F /* Trident.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Trident.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF19CD6B2413F27100C15B6F /* Trident.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Trident.h; sourceTree = "<group>"; };
+		DF19CD6C2413F27100C15B6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DF19CD732413F2A500C15B6F /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		DF19CD742413F2A500C15B6F /* UIColor+RGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+RGB.swift"; sourceTree = "<group>"; };
+		DF19CD752413F2A500C15B6F /* UIScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollView.swift; sourceTree = "<group>"; };
+		DF19CD762413F2A500C15B6F /* BottomLineViewStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomLineViewStyle.swift; sourceTree = "<group>"; };
+		DF19CD772413F2A500C15B6F /* ProgressViewStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewStyle.swift; sourceTree = "<group>"; };
+		DF19CD782413F2A500C15B6F /* MenuItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemView.swift; sourceTree = "<group>"; };
+		DF19CD832413F35B00C15B6F /* TridentDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TridentDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF19CD852413F35B00C15B6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		DF19CD872413F35B00C15B6F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		DF19CD8E2413F35C00C15B6F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DF19CD912413F35C00C15B6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DF19CD932413F35C00C15B6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DF19CD972413F3A600C15B6F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DF19CD982413F3A600C15B6F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		DF19CDA62413F40A00C15B6F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		FB928DFEC97F23175C2F5CE5 /* Pods-TridentDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TridentDemo.release.xcconfig"; path = "Target Support Files/Pods-TridentDemo/Pods-TridentDemo.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DF19CD652413F27100C15B6F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FAAA26DB441E4432EC23D87 /* Pods_Trident.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF19CD802413F35B00C15B6F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF19CDA82413F57800C15B6F /* Trident.framework in Frameworks */,
+				8E56D10ADF73842C2E101EFE /* Pods_TridentDemo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3F58244D59672BC6C60B36A7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3AA7ED5C732BD881F5137142 /* Pods-Trident.debug.xcconfig */,
+				4DC5CC6373C773E54EC2CAE7 /* Pods-Trident.release.xcconfig */,
+				56D74E28010583E5EC110C7C /* Pods-TridentDemo.debug.xcconfig */,
+				FB928DFEC97F23175C2F5CE5 /* Pods-TridentDemo.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		8FC06CF6ABEC1D396B276966 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D8ADCA4A16FAE294C34A4BF7 /* Pods_Trident.framework */,
+				78B6BE6DE67E80E903DEA769 /* Pods_TridentDemo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DF19CD5E2413F27100C15B6F = {
+			isa = PBXGroup;
+			children = (
+				DF19CD842413F35B00C15B6F /* TridentDemo */,
+				DF19CD6A2413F27100C15B6F /* Trident */,
+				DF19CD692413F27100C15B6F /* Products */,
+				3F58244D59672BC6C60B36A7 /* Pods */,
+				8FC06CF6ABEC1D396B276966 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		DF19CD692413F27100C15B6F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DF19CD682413F27100C15B6F /* Trident.framework */,
+				DF19CD832413F35B00C15B6F /* TridentDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DF19CD6A2413F27100C15B6F /* Trident */ = {
+			isa = PBXGroup;
+			children = (
+				DF19CD6B2413F27100C15B6F /* Trident.h */,
+				DF19CD732413F2A500C15B6F /* MenuView.swift */,
+				DF19CD782413F2A500C15B6F /* MenuItemView.swift */,
+				DF19CD772413F2A500C15B6F /* ProgressViewStyle.swift */,
+				DF19CD762413F2A500C15B6F /* BottomLineViewStyle.swift */,
+				DF19CD742413F2A500C15B6F /* UIColor+RGB.swift */,
+				DF19CD752413F2A500C15B6F /* UIScrollView.swift */,
+				DF19CD6C2413F27100C15B6F /* Info.plist */,
+			);
+			path = Trident;
+			sourceTree = "<group>";
+		};
+		DF19CD842413F35B00C15B6F /* TridentDemo */ = {
+			isa = PBXGroup;
+			children = (
+				DF19CD852413F35B00C15B6F /* AppDelegate.swift */,
+				DF19CD872413F35B00C15B6F /* SceneDelegate.swift */,
+				DF19CD972413F3A600C15B6F /* ViewController.swift */,
+				DF19CD982413F3A600C15B6F /* DetailViewController.swift */,
+				DF19CDA62413F40A00C15B6F /* Main.storyboard */,
+				DF19CD8E2413F35C00C15B6F /* Assets.xcassets */,
+				DF19CD902413F35C00C15B6F /* LaunchScreen.storyboard */,
+				DF19CD932413F35C00C15B6F /* Info.plist */,
+			);
+			path = TridentDemo;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		DF19CD632413F27100C15B6F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF19CD6D2413F27100C15B6F /* Trident.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		DF19CD672413F27100C15B6F /* Trident */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DF19CD702413F27100C15B6F /* Build configuration list for PBXNativeTarget "Trident" */;
+			buildPhases = (
+				5A098997AFEACFC2F4E0A2F1 /* [CP] Check Pods Manifest.lock */,
+				DF19CD632413F27100C15B6F /* Headers */,
+				DF19CD642413F27100C15B6F /* Sources */,
+				DF19CD652413F27100C15B6F /* Frameworks */,
+				DF19CD662413F27100C15B6F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Trident;
+			productName = Trident;
+			productReference = DF19CD682413F27100C15B6F /* Trident.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		DF19CD822413F35B00C15B6F /* TridentDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DF19CD962413F35C00C15B6F /* Build configuration list for PBXNativeTarget "TridentDemo" */;
+			buildPhases = (
+				DE047B151CEF3AFC1B16FBB4 /* [CP] Check Pods Manifest.lock */,
+				DF19CD7F2413F35B00C15B6F /* Sources */,
+				DF19CD802413F35B00C15B6F /* Frameworks */,
+				DF19CD812413F35B00C15B6F /* Resources */,
+				A9AA09E014FBC396D615F9F7 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TridentDemo;
+			productName = TridentDemo;
+			productReference = DF19CD832413F35B00C15B6F /* TridentDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DF19CD5F2413F27100C15B6F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = bawn;
+				TargetAttributes = {
+					DF19CD672413F27100C15B6F = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
+					DF19CD822413F35B00C15B6F = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
+				};
+			};
+			buildConfigurationList = DF19CD622413F27100C15B6F /* Build configuration list for PBXProject "Trident" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DF19CD5E2413F27100C15B6F;
+			productRefGroup = DF19CD692413F27100C15B6F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DF19CD672413F27100C15B6F /* Trident */,
+				DF19CD822413F35B00C15B6F /* TridentDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DF19CD662413F27100C15B6F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF19CD812413F35B00C15B6F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF19CDA72413F40A00C15B6F /* Main.storyboard in Resources */,
+				DF19CD922413F35C00C15B6F /* LaunchScreen.storyboard in Resources */,
+				DF19CD8F2413F35C00C15B6F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5A098997AFEACFC2F4E0A2F1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Trident-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A9AA09E014FBC396D615F9F7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TridentDemo/Pods-TridentDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TridentDemo/Pods-TridentDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TridentDemo/Pods-TridentDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DE047B151CEF3AFC1B16FBB4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TridentDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DF19CD642413F27100C15B6F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF19CD7D2413F2A500C15B6F /* MenuView.swift in Sources */,
+				DF19CD7C2413F2A500C15B6F /* MenuItemView.swift in Sources */,
+				DF19CD792413F2A500C15B6F /* UIColor+RGB.swift in Sources */,
+				DF19CD7E2413F2A500C15B6F /* BottomLineViewStyle.swift in Sources */,
+				DF19CD7B2413F2A500C15B6F /* ProgressViewStyle.swift in Sources */,
+				DF19CD7A2413F2A500C15B6F /* UIScrollView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF19CD7F2413F35B00C15B6F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF19CD992413F3A600C15B6F /* ViewController.swift in Sources */,
+				DF19CD862413F35B00C15B6F /* AppDelegate.swift in Sources */,
+				DF19CD882413F35B00C15B6F /* SceneDelegate.swift in Sources */,
+				DF19CD9A2413F3A600C15B6F /* DetailViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		DF19CD902413F35C00C15B6F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DF19CD912413F35C00C15B6F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DF19CD6E2413F27100C15B6F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		DF19CD6F2413F27100C15B6F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.2;
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		DF19CD712413F27100C15B6F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3AA7ED5C732BD881F5137142 /* Pods-Trident.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 8246L2QR6A;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Trident/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = bawn.Trident;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DF19CD722413F27100C15B6F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4DC5CC6373C773E54EC2CAE7 /* Pods-Trident.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 8246L2QR6A;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Trident/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = bawn.Trident;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		DF19CD942413F35C00C15B6F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 56D74E28010583E5EC110C7C /* Pods-TridentDemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8246L2QR6A;
+				INFOPLIST_FILE = TridentDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = bawn.TridentDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DF19CD952413F35C00C15B6F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB928DFEC97F23175C2F5CE5 /* Pods-TridentDemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8246L2QR6A;
+				INFOPLIST_FILE = TridentDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = bawn.TridentDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DF19CD622413F27100C15B6F /* Build configuration list for PBXProject "Trident" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DF19CD6E2413F27100C15B6F /* Debug */,
+				DF19CD6F2413F27100C15B6F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DF19CD702413F27100C15B6F /* Build configuration list for PBXNativeTarget "Trident" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DF19CD712413F27100C15B6F /* Debug */,
+				DF19CD722413F27100C15B6F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DF19CD962413F35C00C15B6F /* Build configuration list for PBXNativeTarget "TridentDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DF19CD942413F35C00C15B6F /* Debug */,
+				DF19CD952413F35C00C15B6F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DF19CD5F2413F27100C15B6F /* Project object */;
+}
