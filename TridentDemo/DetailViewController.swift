@@ -47,6 +47,7 @@ class DetailViewController: UIViewController {
         
         
         let view = TridentMenuView(parts:
+            .itemSpace(15.0),
             .normalTextColor(UIColor.gray),
             .selectedTextColor(UIColor.blue),
             .textFont(UIFont.systemFont(ofSize: 15.0)),
@@ -117,9 +118,10 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        menuView.sliderViewStyle.backgroundColor = .brown
-        menuView.sliderViewStyle.height = 6
-        menuView.sliderViewStyle.cornerRadius = 3
+//        menuView.sliderViewStyle.backgroundColor = .brown
+//        menuView.sliderViewStyle.height = 6
+//        menuView.sliderViewStyle.cornerRadius = 3
+        menuView.itemSpace = 30
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
