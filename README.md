@@ -11,6 +11,10 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
+- iOS 9.0+
+- Swift 4.2+
+- Xcode 11.3+
+
 ## Installation
 
 Trident is available through [CocoaPods](https://cocoapods.org). To install
