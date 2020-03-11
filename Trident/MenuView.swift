@@ -1,6 +1,6 @@
 //
 //  MenuView.swift
-//  Aquaman-Demo
+//  Trident
 //
 //  Created by bawn on 2020/02/11.
 //  Copyright © 2020 bawn. All rights reserved.( http://bawn.github.io )
@@ -41,7 +41,7 @@ public enum MenuSwitchStyle {
     case telescopic // 伸缩
 }
 
-public protocol MenuViewDelegate: class {
+public protocol TridentMenuViewDelegate: class {
     func menuView(_ menuView: TridentMenuView, didSelectedItemAt index: Int)
 }
 
@@ -75,7 +75,7 @@ public class TridentMenuView: UIView {
         return view
     }()
     private var menuItemViews = [MenuItemView]()
-    public weak var delegate: MenuViewDelegate?
+    public weak var delegate: TridentMenuViewDelegate?
     
     private var textFont = UIFont.systemFont(ofSize: 15.0)
     private var normalTextColor = UIColor.darkGray

@@ -1,6 +1,6 @@
 //
 //  UIScrollView.swift
-//  Aquaman-Demo
+//  Trident
 //
 //  Created by bawn on 2020/02/11.
 //  Copyright © 2020 bawn. All rights reserved.( http://bawn.github.io )

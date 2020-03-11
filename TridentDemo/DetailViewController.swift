@@ -141,7 +141,7 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
 }
 
-extension DetailViewController: MenuViewDelegate {
+extension DetailViewController: TridentMenuViewDelegate {
     
     func menuView(_ menuView: TridentMenuView, didSelectedItemAt index: Int) {
         collectionView.scrollToItem(at: IndexPath(row: index, section: 0), at: .centeredHorizontally, animated: true)
