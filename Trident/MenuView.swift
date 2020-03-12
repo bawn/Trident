@@ -28,6 +28,7 @@ import SnapKit
 
 public enum MenuStyle {
     case textFont(UIFont)
+    case itemSpace(CGFloat)
     case normalTextColor(UIColor)
     case selectedTextColor(UIColor)
     case contentInset(UIEdgeInsets)
@@ -46,15 +47,15 @@ public protocol TridentMenuViewDelegate: class {
 }
 
 public class TridentMenuView: UIView {
-    private let stackView: UIStackView = {
+    private lazy var stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.alignment = .center
         stackView.distribution = .equalSpacing
-        stackView.spacing = 30.0
+        stackView.spacing = itemSpace
         return stackView
     }()
-    lazy private var scrollView: UIScrollView = {
+    private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.showsVerticalScrollIndicator = false
@@ -78,6 +79,13 @@ public class TridentMenuView: UIView {
     public weak var delegate: TridentMenuViewDelegate?
     
     private var textFont = UIFont.systemFont(ofSize: 15.0)
+    public var itemSpace:CGFloat = 30.0 {
+        didSet {
+            stackView.spacing = itemSpace
+            layoutIfNeeded()
+            layoutSlider()
+        }
+    }
     private var normalTextColor = UIColor.darkGray
     private var selectedTextColor = UIColor.red
     public var contentInset = UIEdgeInsets.zero {
@@ -104,6 +112,8 @@ public class TridentMenuView: UIView {
             switch part {
             case .textFont(let font):
                 textFont = font
+            case .itemSpace(let space):
+                itemSpace = space
             case .normalTextColor(let color):
                 normalTextColor = color
             case .selectedTextColor(let color):
@@ -179,7 +189,7 @@ public class TridentMenuView: UIView {
         }
     }
     
-    private var itemSpace: CGFloat {
+    private var itemMidSpace: CGFloat {
         guard let currentLabel = currentLabel
             , let nextLabel = nextLabel else {
                 return 0.0
@@ -244,6 +254,7 @@ public class TridentMenuView: UIView {
     
     private func initialize() {
         backgroundColor = .white
+        clipsToBounds = true
         addSubview(scrollView)
         scrollView.snp.makeConstraints { (make) in
             make.leading.equalToSuperview().offset(contentInset.left)
@@ -314,29 +325,7 @@ public class TridentMenuView: UIView {
         currentIndex = index
         let value:CGFloat = offsetX > CGFloat(titles.count - 1) * externalScrollView.bounds.width ? -1 : 1
         scrollRate = value * (offsetX - CGFloat(currentIndex) * scrollViewWidth) / scrollViewWidth
-        let currentWidth = stackView.arrangedSubviews[currentIndex].bounds.width
-        let leadingMargin = stackView.arrangedSubviews[currentIndex].frame.midX
-
-        switch switchStyle {
-        case .line:
-            sliderView.snp.updateConstraints { (make) in
-                switch sliderViewStyle.shape {
-                case .line:
-                    make.width.equalTo(widthDifference * scrollRate + currentWidth + sliderViewStyle.extraWidth)
-                case .triangle:
-                    make.width.equalTo(sliderViewStyle.height + sliderViewStyle.extraWidth)
-                case .round:
-                    make.width.equalTo(sliderViewStyle.height)
-                }
-                make.centerX.equalTo(scrollView.snp.leading).offset(leadingMargin + itemSpace * scrollRate)
-            }
-        case .telescopic:
-            sliderView.snp.updateConstraints { (make) in
-                let rate = (scrollRate <= 0.5 ? scrollRate : (1.0 - scrollRate)) * sliderViewStyle.elasticValue
-                make.width.equalTo(max(centerXDifference * rate + sliderViewStyle.originWidth, 0))
-                make.centerX.equalTo(scrollView.snp.leading).offset(leadingMargin + itemSpace * scrollRate)
-            }
-        }
+        layoutSlider(scrollRate)
     }
     
     public func checkState(animation: Bool) {
@@ -353,6 +342,33 @@ public class TridentMenuView: UIView {
             return
         }
         scrollView.scrollToSuitablePosition(currentLabel, animation)
+    }
+    
+    func layoutSlider(_ scrollRate: CGFloat = 0.0) {
+>>>>>>> 9ed84860946b0599d2f356aafd708c3a52a39808
+        let currentWidth = stackView.arrangedSubviews[currentIndex].bounds.width
+        let leadingMargin = stackView.arrangedSubviews[currentIndex].frame.midX
+
+        switch switchStyle {
+        case .line:
+            sliderView.snp.updateConstraints { (make) in
+                switch sliderViewStyle.shape {
+                case .line:
+                    make.width.equalTo(widthDifference * scrollRate + currentWidth + sliderViewStyle.extraWidth)
+                case .triangle:
+                    make.width.equalTo(sliderViewStyle.height + sliderViewStyle.extraWidth)
+                case .round:
+                    make.width.equalTo(sliderViewStyle.height)
+                }
+                make.centerX.equalTo(scrollView.snp.leading).offset(leadingMargin + itemMidSpace * scrollRate)
+            }
+        case .telescopic:
+            sliderView.snp.updateConstraints { (make) in
+                let rate = (scrollRate <= 0.5 ? scrollRate : (1.0 - scrollRate)) * sliderViewStyle.elasticValue
+                make.width.equalTo(max(centerXDifference * rate + sliderViewStyle.originWidth, 0))
+                make.centerX.equalTo(scrollView.snp.leading).offset(leadingMargin + itemMidSpace * scrollRate)
+            }
+        }
     }
 }
 
