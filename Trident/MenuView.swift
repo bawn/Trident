@@ -345,7 +345,7 @@ public class TridentMenuView: UIView {
     }
     
     func layoutSlider(_ scrollRate: CGFloat = 0.0) {
->>>>>>> 9ed84860946b0599d2f356aafd708c3a52a39808
+
         let currentWidth = stackView.arrangedSubviews[currentIndex].bounds.width
         let leadingMargin = stackView.arrangedSubviews[currentIndex].frame.midX
 
