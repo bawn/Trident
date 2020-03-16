@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5FAAA26DB441E4432EC23D87 /* Pods_Trident.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8ADCA4A16FAE294C34A4BF7 /* Pods_Trident.framework */; };
+		7A0186FA241FE28600DD4A7F /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0186F9241FE28600DD4A7F /* UIFont.swift */; };
 		8E56D10ADF73842C2E101EFE /* Pods_TridentDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B6BE6DE67E80E903DEA769 /* Pods_TridentDemo.framework */; };
 		DF19CD6D2413F27100C15B6F /* Trident.h in Headers */ = {isa = PBXBuildFile; fileRef = DF19CD6B2413F27100C15B6F /* Trident.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF19CD792413F2A500C15B6F /* UIColor+RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF19CD742413F2A500C15B6F /* UIColor+RGB.swift */; };
@@ -31,6 +32,7 @@
 		4DC5CC6373C773E54EC2CAE7 /* Pods-Trident.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trident.release.xcconfig"; path = "Target Support Files/Pods-Trident/Pods-Trident.release.xcconfig"; sourceTree = "<group>"; };
 		56D74E28010583E5EC110C7C /* Pods-TridentDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TridentDemo.debug.xcconfig"; path = "Target Support Files/Pods-TridentDemo/Pods-TridentDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		78B6BE6DE67E80E903DEA769 /* Pods_TridentDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TridentDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A0186F9241FE28600DD4A7F /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		D8ADCA4A16FAE294C34A4BF7 /* Pods_Trident.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trident.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF19CD682413F27100C15B6F /* Trident.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Trident.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF19CD6B2413F27100C15B6F /* Trident.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Trident.h; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				DF19CD772413F2A500C15B6F /* ProgressViewStyle.swift */,
 				DF19CD762413F2A500C15B6F /* BottomLineViewStyle.swift */,
 				DF19CD742413F2A500C15B6F /* UIColor+RGB.swift */,
+				7A0186F9241FE28600DD4A7F /* UIFont.swift */,
 				DF19CD752413F2A500C15B6F /* UIScrollView.swift */,
 				DF19CD6C2413F27100C15B6F /* Info.plist */,
 			);
@@ -325,6 +328,7 @@
 				DF19CD7D2413F2A500C15B6F /* MenuView.swift in Sources */,
 				DF19CD7C2413F2A500C15B6F /* MenuItemView.swift in Sources */,
 				DF19CD792413F2A500C15B6F /* UIColor+RGB.swift in Sources */,
+				7A0186FA241FE28600DD4A7F /* UIFont.swift in Sources */,
 				DF19CD7E2413F2A500C15B6F /* BottomLineViewStyle.swift in Sources */,
 				DF19CD7B2413F2A500C15B6F /* ProgressViewStyle.swift in Sources */,
 				DF19CD7A2413F2A500C15B6F /* UIScrollView.swift in Sources */,

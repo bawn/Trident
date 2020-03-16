@@ -27,7 +27,8 @@ import UIKit
 import SnapKit
 
 public enum MenuStyle {
-    case textFont(UIFont)
+    case normalTextFont(UIFont)
+    case selectedTextFont(UIFont)
     case itemSpace(CGFloat)
     case normalTextColor(UIColor)
     case selectedTextColor(UIColor)
@@ -78,7 +79,8 @@ public class TridentMenuView: UIView {
     private var menuItemViews = [MenuItemView]()
     public weak var delegate: TridentMenuViewDelegate?
     
-    private var textFont = UIFont.systemFont(ofSize: 15.0)
+    private var normalTextFont = UIFont.systemFont(ofSize: 15.0)
+    private var selectedTextFont = UIFont.systemFont(ofSize: 15, weight: .medium)
     public var itemSpace:CGFloat = 30.0 {
         didSet {
             stackView.spacing = itemSpace
@@ -110,8 +112,10 @@ public class TridentMenuView: UIView {
         super.init(frame: .zero)
         for part in parts {
             switch part {
-            case .textFont(let font):
-                textFont = font
+            case .normalTextFont(let font):
+                normalTextFont = font
+            case .selectedTextFont(let font):
+                selectedTextFont = font
             case .itemSpace(let space):
                 itemSpace = space
             case .normalTextColor(let color):
@@ -149,8 +153,11 @@ public class TridentMenuView: UIView {
                 return
             }
             titles.forEach { (item) in
-                let label = MenuItemView(textFont, normalTextColor, selectedTextColor)
-                label.text = item
+                let label = MenuItemView(item,
+                                         normalTextFont,
+                                         selectedTextFont,
+                                         normalTextColor,
+                                         selectedTextColor)
                 label.isUserInteractionEnabled = true
                 let tap = UITapGestureRecognizer(target: self, action: #selector(titleTapAction(_:)))
                 label.addGestureRecognizer(tap)
@@ -337,11 +344,11 @@ public class TridentMenuView: UIView {
             , currentIndex < titles.count else {
             return
         }
-        menuItemViews.forEach({$0.textColor = normalTextColor})
-        menuItemViews[currentIndex].textColor = selectedTextColor
+        menuItemViews.forEach({$0.showNormalStyle()})
+        menuItemViews[currentIndex].showSelectedStyle()
         
-        self.currentLabel = menuItemViews[currentIndex]
-        self.nextLabel = menuItemViews[nextIndex]
+        currentLabel = menuItemViews[currentIndex]
+        nextLabel = menuItemViews[nextIndex]
         guard let currentLabel = currentLabel else {
             return
         }

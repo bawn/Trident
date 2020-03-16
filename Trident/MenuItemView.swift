@@ -28,26 +28,65 @@ import UIKit
 internal class MenuItemView: UILabel {
     private var normalColors = UIColor.white.rgb
     private var selectedColors = UIColor.white.rgb
+    private var normalFont = UIFont.systemFont(ofSize: 15, weight: .regular)
+    private var selectedFont = UIFont.systemFont(ofSize: 15, weight: .medium)
     
     internal var rate: CGFloat = 0.0 {
         didSet {
             guard rate > 0.0, rate < 1.0 else {
                 return
             }
-            let r = normalColors.red + (selectedColors.red - normalColors.red) * rate
-            let g = normalColors.green + (selectedColors.green - normalColors.green) * rate
-            let b = normalColors.blue + (selectedColors.blue - normalColors.blue) * rate
-            let a = normalColors.alpha + (selectedColors.alpha - normalColors.alpha) * rate
-            
-            textColor = UIColor(red: r, green: g, blue: b, alpha: a)
+            configAttributedText(rate)
         }
     }
     
-    internal init(_ textFont: UIFont, _ normalTextColor: UIColor, _ selectedTextColor: UIColor) {
+    internal init(_ text: String,
+                  _ normalFont: UIFont,
+                  _ selectedFont: UIFont,
+                  _ normalColor: UIColor,
+                  _ selectedColor: UIColor) {
         super.init(frame: .zero)
-        self.font = textFont
-        normalColors = normalTextColor.rgb
-        selectedColors = selectedTextColor.rgb
+        
+        self.normalFont = normalFont
+        self.selectedFont = selectedFont
+        
+        normalColors = normalColor.rgb
+        selectedColors = selectedColor.rgb
+        
+        let attributes: [NSAttributedString.Key: Any] = [.font: normalFont, .foregroundColor: normalColor]
+        attributedText = NSAttributedString(string: text, attributes: attributes)
+    }
+    
+    internal func configAttributedText(_ rate: CGFloat) {
+        let r = normalColors.red + (selectedColors.red - normalColors.red) * rate
+        let g = normalColors.green + (selectedColors.green - normalColors.green) * rate
+        let b = normalColors.blue + (selectedColors.blue - normalColors.blue) * rate
+        let a = normalColors.alpha + (selectedColors.alpha - normalColors.alpha) * rate
+        
+
+        let strokeWidth = CGFloat(selectedFont.weightValue - normalFont.weightValue) * normalFont.pointSize * rate
+        guard let text = attributedText?.string else {
+            return
+        }
+        
+        
+        let color =  UIColor(red: r, green: g, blue: b, alpha: a)
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: font,
+            .foregroundColor: color,
+            .strokeWidth: -floor(strokeWidth) * 0.5,
+            .strokeColor: color
+        ]
+
+        attributedText = NSAttributedString(string: text, attributes: attributes)
+    }
+    
+    internal func showNormalStyle() {
+        configAttributedText(0)
+    }
+    
+    internal func showSelectedStyle() {
+        configAttributedText(1)
     }
     
     required init?(coder aDecoder: NSCoder) {
