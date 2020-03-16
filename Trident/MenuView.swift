@@ -330,12 +330,8 @@ public class TridentMenuView: UIView {
         }
         
         currentIndex = index
-        if offsetX > CGFloat(titles.count - 1) * externalScrollView.bounds.width {
-            scrollRate = -(offsetX - CGFloat(currentIndex) * scrollViewWidth) / scrollViewWidth
-        } else {
-            scrollRate = (offsetX - CGFloat(currentIndex) * scrollViewWidth) / scrollViewWidth
-        }
-        
+        let value:CGFloat = offsetX > CGFloat(titles.count - 1) * externalScrollView.bounds.width ? -1 : 1
+        scrollRate = value * (offsetX - CGFloat(currentIndex) * scrollViewWidth) / scrollViewWidth
         layoutSlider(scrollRate)
     }
     
@@ -356,6 +352,7 @@ public class TridentMenuView: UIView {
     }
     
     func layoutSlider(_ scrollRate: CGFloat = 0.0) {
+
         let currentWidth = stackView.arrangedSubviews[currentIndex].bounds.width
         let leadingMargin = stackView.arrangedSubviews[currentIndex].frame.midX
 
