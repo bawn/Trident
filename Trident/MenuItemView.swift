@@ -63,22 +63,21 @@ internal class MenuItemView: UILabel {
         let b = normalColors.blue + (selectedColors.blue - normalColors.blue) * rate
         let a = normalColors.alpha + (selectedColors.alpha - normalColors.alpha) * rate
         
-
-        let strokeWidth = CGFloat(selectedFont.weightValue - normalFont.weightValue) * normalFont.pointSize * rate
+        
+        let strokeWidth = floor(CGFloat(selectedFont.weightValue - normalFont.weightValue) * 8.0) * rate
         guard let text = attributedText?.string else {
             return
         }
         
-        
         let color =  UIColor(red: r, green: g, blue: b, alpha: a)
-        let attributes: [NSAttributedString.Key: Any] = [
-            .font: font,
-            .foregroundColor: color,
-            .strokeWidth: -floor(strokeWidth) * 0.5,
-            .strokeColor: color
-        ]
+            let attributes: [NSAttributedString.Key: Any] = [
+                .font: font,
+                .foregroundColor: color,
+                .strokeWidth: -abs(strokeWidth),
+                .strokeColor: color
+            ]
 
-        attributedText = NSAttributedString(string: text, attributes: attributes)
+            attributedText = NSAttributedString(string: text, attributes: attributes)
     }
     
     internal func showNormalStyle() {

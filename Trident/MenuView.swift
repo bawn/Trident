@@ -86,6 +86,7 @@ public class TridentMenuView: UIView {
             stackView.spacing = itemSpace
             layoutIfNeeded()
             layoutSlider()
+            scrollView.scrollToSuitablePosition(currentLabel, false)
         }
     }
     private var normalTextColor = UIColor.darkGray

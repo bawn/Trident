@@ -11,12 +11,12 @@ import UIKit
 
 extension UIFont {
     var weightValue: Float {
-        guard let weightNumber = traits[.weight] as? NSNumber else {
+        guard let value = traits[.weight] as? NSNumber else {
             return 0
         }
-        return weightNumber.floatValue
+        return value.floatValue
     }
-
+    
     private var traits: [UIFontDescriptor.TraitKey: Any] {
         return fontDescriptor.object(forKey: .traits) as? [UIFontDescriptor.TraitKey: Any] ?? [:]
     }
