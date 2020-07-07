@@ -30,6 +30,11 @@ internal class MenuItemView: UILabel {
     private var selectedColors = UIColor.white.rgb
     private var normalFont = UIFont.systemFont(ofSize: 15, weight: .regular)
     private var selectedFont = UIFont.systemFont(ofSize: 15, weight: .medium)
+    var isSelected = false {
+        didSet {
+            configAttributedText(isSelected ? 1 : 0)
+        }
+    }
     
     internal var rate: CGFloat = 0.0 {
         didSet {
@@ -80,13 +85,13 @@ internal class MenuItemView: UILabel {
             attributedText = NSAttributedString(string: text, attributes: attributes)
     }
     
-    internal func showNormalStyle() {
-        configAttributedText(0)
-    }
-    
-    internal func showSelectedStyle() {
-        configAttributedText(1)
-    }
+//    internal func showNormalStyle() {
+//        configAttributedText(0)
+//    }
+//    
+//    internal func showSelectedStyle() {
+//        configAttributedText(1)
+//    }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

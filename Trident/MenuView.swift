@@ -341,8 +341,8 @@ public class TridentMenuView: UIView {
             , currentIndex < titles.count else {
             return
         }
-        menuItemViews.forEach({$0.showNormalStyle()})
-        menuItemViews[currentIndex].showSelectedStyle()
+        menuItemViews.forEach({$0.isSelected = false})
+        menuItemViews[currentIndex].isSelected = true
         
         currentLabel = menuItemViews[currentIndex]
         nextLabel = menuItemViews[nextIndex]
