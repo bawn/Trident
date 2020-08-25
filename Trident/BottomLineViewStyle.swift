@@ -44,7 +44,7 @@ public class BottomLineViewStyle {
     
     public var height: CGFloat = 0.5 {
         didSet {
-            targetView?.snp.updateConstraints({$0.height.equalTo(height)})
+            targetViewHeight?.constant = height
         }
     }
     
@@ -56,12 +56,14 @@ public class BottomLineViewStyle {
     
     weak var targetView: UIView? {
         didSet {
+            targetView?.translatesAutoresizingMaskIntoConstraints = false
             targetView?.backgroundColor = backgroundColor
-            targetView?.snp.updateConstraints({$0.height.equalTo(height)})
             targetView?.isHidden = hidden
+            targetViewHeight = targetView?.heightAnchor.constraint(equalToConstant: height)
         }
     }
     
+    private var targetViewHeight: NSLayoutConstraint?
     public init(view: UIView) {
         targetView = view
     }
