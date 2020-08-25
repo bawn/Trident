@@ -24,7 +24,6 @@
 //  THE SOFTWARE.
 
 import UIKit
-import SnapKit
 
 public enum MenuStyle {
     case normalTextFont(UIFont)
@@ -50,30 +49,38 @@ public protocol TridentMenuViewDelegate: class {
 public class TridentMenuView: UIView {
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
         stackView.alignment = .center
         stackView.distribution = .equalSpacing
         stackView.spacing = itemSpace
         return stackView
     }()
+    
+    private var scrollViewConstraints: [NSLayoutConstraint] = []
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.showsVerticalScrollIndicator = false
         scrollView.scrollsToTop = false
         scrollView.clipsToBounds = false
         return scrollView
     }()
+    
+    private var sliderWidth: NSLayoutConstraint?
+    private var sliderCenterX: NSLayoutConstraint?
     private lazy var sliderView: UIView = {
         let view = UIView()
         view.backgroundColor = selectedTextColor
-        view.snp.makeConstraints({$0.height.equalTo(2.0);$0.width.equalTo(0)})
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     private let bottomLineView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.black.withAlphaComponent(0.15)
-        view.snp.makeConstraints({$0.height.equalTo(0.5)})
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
         return view
     }()
     private var menuItemViews = [MenuItemView]()
@@ -97,12 +104,13 @@ public class TridentMenuView: UIView {
                 return
             }
             
-            scrollView.snp.updateConstraints { (make) in
-                make.leading.equalToSuperview().offset(contentInset.left)
-                make.trailing.equalToSuperview().offset(-contentInset.right)
-                make.top.equalToSuperview().offset(contentInset.top)
-                make.bottom.equalToSuperview().offset(-contentInset.bottom)
+            if scrollViewConstraints.count == 4 {
+                scrollViewConstraints.first?.constant = contentInset.top
+                scrollViewConstraints[1].constant = contentInset.left
+                scrollViewConstraints[2].constant = -contentInset.bottom
+                scrollViewConstraints.last?.constant = -contentInset.right
             }
+            
         }
     }
     public private(set) lazy var sliderViewStyle = SliderViewStyle(view: sliderView)
@@ -160,12 +168,11 @@ public class TridentMenuView: UIView {
                                          normalTextColor,
                                          selectedTextColor)
                 label.isUserInteractionEnabled = true
+                label.translatesAutoresizingMaskIntoConstraints = false
                 let tap = UITapGestureRecognizer(target: self, action: #selector(titleTapAction(_:)))
                 label.addGestureRecognizer(tap)
                 stackView.addArrangedSubview(label)
-                label.snp.makeConstraints({ (make) in
-                    make.height.equalToSuperview()
-                })
+                label.heightAnchor.constraint(equalTo: stackView.heightAnchor).isActive = true
                 menuItemViews.append(label)
             }
 
@@ -189,10 +196,9 @@ public class TridentMenuView: UIView {
             }
             
             let offset = stackView.arrangedSubviews.first?.frame.midX ?? 0.0
-            sliderView.snp.updateConstraints { (make) in
-                make.width.equalTo(progressWidth)
-                make.centerX.equalTo(scrollView.snp.leading).offset(offset)
-            }
+            sliderWidth?.constant = progressWidth
+            sliderCenterX?.constant = offset
+            
             checkState(animation: false)
         }
     }
@@ -264,40 +270,50 @@ public class TridentMenuView: UIView {
         backgroundColor = .white
         clipsToBounds = true
         addSubview(scrollView)
-        scrollView.snp.makeConstraints { (make) in
-            make.leading.equalToSuperview().offset(contentInset.left)
-            make.trailing.equalToSuperview().offset(-contentInset.right)
-            make.top.equalToSuperview().offset(contentInset.top)
-            make.bottom.equalToSuperview().offset(-contentInset.bottom)
-        }
-        
+        let constraints = [
+            scrollView.topAnchor.constraint(equalTo: topAnchor, constant: contentInset.top),
+            scrollView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: contentInset.left),
+            scrollView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -contentInset.bottom),
+            scrollView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -contentInset.right)
+        ]
+        scrollViewConstraints = constraints
+        NSLayoutConstraint.activate(constraints)
         
         scrollView.addSubview(stackView)
-        stackView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-            make.height.equalToSuperview()
-        }
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            stackView.heightAnchor.constraint(equalTo: scrollView.heightAnchor)
+        ])
         
         scrollView.addSubview(sliderView)
         scrollView.sendSubviewToBack(sliderView)
-        sliderView.snp.makeConstraints { (make) in
-            make.centerX.equalTo(scrollView.snp.leading).offset(0)
-            switch sliderViewStyle.position {
-            case .bottom:
-                make.bottom.equalToSuperview()
-            case .center:
-                make.centerY.equalToSuperview()
-            case .top:
-                make.top.equalToSuperview()
-            }
+        
+        let sliderWidth: NSLayoutConstraint = sliderView.widthAnchor.constraint(equalToConstant: 0)
+        let sliderCenterX: NSLayoutConstraint = sliderView.centerXAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 0)
+        var sliderPositionLayout: NSLayoutConstraint!
+        switch sliderViewStyle.position {
+        case .bottom:
+            sliderPositionLayout = sliderView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
+        case .center:
+            sliderPositionLayout = sliderView.centerYAnchor.constraint(equalTo: scrollView.centerYAnchor)
+        case .top:
+            sliderPositionLayout = sliderView.topAnchor.constraint(equalTo: scrollView.topAnchor)
         }
+        NSLayoutConstraint.activate([
+            sliderWidth, sliderPositionLayout, sliderCenterX,
+        ])
+        self.sliderWidth = sliderWidth
+        self.sliderCenterX = sliderCenterX
         
         addSubview(bottomLineView)
-        bottomLineView.snp.makeConstraints { (make) in
-            make.leading.trailing.equalToSuperview()
-            make.bottom.equalToSuperview()
-        }
-        
+        NSLayoutConstraint.activate([
+            bottomLineView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            bottomLineView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            bottomLineView.bottomAnchor.constraint(equalTo: bottomAnchor),
+        ])
     }
     
     override open func layoutSubviews() {
@@ -359,23 +375,19 @@ public class TridentMenuView: UIView {
 
         switch switchStyle {
         case .line:
-            sliderView.snp.updateConstraints { (make) in
-                switch sliderViewStyle.shape {
-                case .line:
-                    make.width.equalTo(widthDifference * scrollRate + currentWidth + sliderViewStyle.extraWidth)
-                case .triangle:
-                    make.width.equalTo(sliderViewStyle.height + sliderViewStyle.extraWidth)
-                case .round:
-                    make.width.equalTo(sliderViewStyle.height)
-                }
-                make.centerX.equalTo(scrollView.snp.leading).offset(leadingMargin + itemMidSpace * scrollRate)
+            switch sliderViewStyle.shape {
+            case .line:
+                sliderWidth?.constant = widthDifference * scrollRate + currentWidth + sliderViewStyle.extraWidth
+            case .triangle:
+                sliderWidth?.constant = sliderViewStyle.height + sliderViewStyle.extraWidth
+            case .round:
+                sliderWidth?.constant = sliderViewStyle.height
             }
+            sliderCenterX?.constant = leadingMargin + itemMidSpace * scrollRate
         case .telescopic:
-            sliderView.snp.updateConstraints { (make) in
-                let rate = (scrollRate <= 0.5 ? scrollRate : (1.0 - scrollRate)) * sliderViewStyle.elasticValue
-                make.width.equalTo(max(centerXDifference * rate + sliderViewStyle.originWidth, 0))
-                make.centerX.equalTo(scrollView.snp.leading).offset(leadingMargin + itemMidSpace * scrollRate)
-            }
+            let rate = (scrollRate <= 0.5 ? scrollRate : (1.0 - scrollRate)) * sliderViewStyle.elasticValue
+            sliderWidth?.constant = max(centerXDifference * rate + sliderViewStyle.originWidth, 0)
+            sliderCenterX?.constant = leadingMargin + itemMidSpace * scrollRate
         }
     }
 }
