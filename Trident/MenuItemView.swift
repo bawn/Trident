@@ -25,12 +25,28 @@
 
 import UIKit
 
-internal class MenuItemView: UILabel {
+internal class MenuItemView: UIView {
+    private let textLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    private let placeholdLabel: UILabel = {
+        let label = UILabel()
+        label.isHidden = true
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    private var normalColor = UIColor.white
+    private var selectedColor = UIColor.lightGray
     private var normalColors = UIColor.white.rgb
-    private var selectedColors = UIColor.white.rgb
+    private var selectedColors = UIColor.lightGray.rgb
     private var normalFont = UIFont.systemFont(ofSize: 15, weight: .regular)
     private var selectedFont = UIFont.systemFont(ofSize: 15, weight: .medium)
-    var isSelected = false {
+    
+    internal var isSelected = false {
         didSet {
             configAttributedText(isSelected ? 1 : 0)
         }
@@ -55,11 +71,28 @@ internal class MenuItemView: UILabel {
         self.normalFont = normalFont
         self.selectedFont = selectedFont
         
+        self.normalColor = normalColor
+        self.selectedColor = selectedColor
+        
         normalColors = normalColor.rgb
         selectedColors = selectedColor.rgb
         
+        addSubview(placeholdLabel)
+        NSLayoutConstraint.activate([
+            placeholdLabel.topAnchor.constraint(equalTo: topAnchor),
+            placeholdLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
+            placeholdLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            placeholdLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+        ])
+        addSubview(textLabel)
+        NSLayoutConstraint.activate([
+            textLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            textLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+        ])
+        
         let attributes: [NSAttributedString.Key: Any] = [.font: normalFont, .foregroundColor: normalColor]
-        attributedText = NSAttributedString(string: text, attributes: attributes)
+        textLabel.attributedText = NSAttributedString(string: text, attributes: attributes)
+        placeholdLabel.attributedText = NSAttributedString(string: text, attributes: attributes)
     }
     
     internal func configAttributedText(_ rate: CGFloat) {
@@ -70,31 +103,35 @@ internal class MenuItemView: UILabel {
         
         
         let strokeWidth = floor(CGFloat(selectedFont.weightValue - normalFont.weightValue) * 8.0) * rate
-        guard let text = attributedText?.string else {
+        guard let text = textLabel.attributedText?.string
+            , normalFont.pointSize != 0.0 else {
             return
         }
         
         let color =  UIColor(red: r, green: g, blue: b, alpha: a)
             let attributes: [NSAttributedString.Key: Any] = [
-                .font: font,
+                .font: normalFont,
                 .foregroundColor: color,
                 .strokeWidth: -abs(strokeWidth),
                 .strokeColor: color
             ]
 
-            attributedText = NSAttributedString(string: text, attributes: attributes)
+        textLabel.attributedText = NSAttributedString(string: text, attributes: attributes)
+        placeholdLabel.attributedText = NSAttributedString(string: text, attributes: attributes)
+        
+        let scaleRatio = (selectedFont.pointSize / normalFont.pointSize) - 1.0
+        let scaleValue = 1.0 + scaleRatio * rate
+        textLabel.transform = CGAffineTransform(scaleX: scaleValue, y: scaleValue)
     }
-    
-//    internal func showNormalStyle() {
-//        configAttributedText(0)
-//    }
-//    
-//    internal func showSelectedStyle() {
-//        configAttributedText(1)
-//    }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    func updateText(_ text: String) {
+        let attributes: [NSAttributedString.Key: Any] = [.font: normalFont, .foregroundColor: normalColor]
+        textLabel.attributedText = NSAttributedString(string: text, attributes: attributes)
+        placeholdLabel.attributedText = NSAttributedString(string: text, attributes: attributes)
     }
 }
 

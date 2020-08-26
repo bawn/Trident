@@ -162,18 +162,18 @@ public class TridentMenuView: UIView {
                 return
             }
             titles.forEach { (item) in
-                let label = MenuItemView(item,
-                                         normalTextFont,
-                                         selectedTextFont,
-                                         normalTextColor,
-                                         selectedTextColor)
-                label.isUserInteractionEnabled = true
-                label.translatesAutoresizingMaskIntoConstraints = false
+                let itemView = MenuItemView(item,
+                                            normalTextFont,
+                                            selectedTextFont,
+                                            normalTextColor,
+                                            selectedTextColor)
+                itemView.isUserInteractionEnabled = true
+                itemView.translatesAutoresizingMaskIntoConstraints = false
                 let tap = UITapGestureRecognizer(target: self, action: #selector(titleTapAction(_:)))
-                label.addGestureRecognizer(tap)
-                stackView.addArrangedSubview(label)
-                label.heightAnchor.constraint(equalTo: stackView.heightAnchor).isActive = true
-                menuItemViews.append(label)
+                itemView.addGestureRecognizer(tap)
+                stackView.addArrangedSubview(itemView)
+                itemView.heightAnchor.constraint(equalTo: stackView.heightAnchor).isActive = true
+                menuItemViews.append(itemView)
             }
 
             currentIndex = 0
@@ -347,7 +347,7 @@ public class TridentMenuView: UIView {
         }
         
         currentIndex = index
-        let value:CGFloat = offsetX > CGFloat(titles.count - 1) * externalScrollView.bounds.width ? -1 : 1
+        let value: CGFloat = offsetX > CGFloat(titles.count - 1) * externalScrollView.bounds.width ? -1 : 1
         scrollRate = value * (offsetX - CGFloat(currentIndex) * scrollViewWidth) / scrollViewWidth
         layoutSlider(scrollRate)
     }

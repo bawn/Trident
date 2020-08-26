@@ -51,7 +51,7 @@ class DetailViewController: UIViewController {
             .normalTextColor(UIColor.gray),
             .selectedTextColor(UIColor.blue),
             .normalTextFont(UIFont.systemFont(ofSize: 15.0, weight: .regular)),
-            .selectedTextFont(UIFont.systemFont(ofSize: 15.0, weight: .bold)),
+            .selectedTextFont(UIFont.systemFont(ofSize: 17.0, weight: .bold)),
             .switchStyle(switchStyle),
             .sliderStyle(
                 SliderViewStyle(parts:
