@@ -60,14 +60,9 @@ public class SliderViewStyle {
     
     public var height: CGFloat = 2.0 {
         didSet {
-            switch shape {
-            case .line:
-                targetView?.snp.updateConstraints({$0.height.equalTo(height)})
-            case .round:
-                targetView?.snp.updateConstraints({$0.height.equalTo(height)})
+            targetViewHeight?.constant = height
+            if shape == .round {
                 targetView?.layer.cornerRadius = height * 0.5
-            default:
-                break
             }
         }
     }
@@ -95,10 +90,13 @@ public class SliderViewStyle {
     var extraWidth: CGFloat = 0.0
     var position = SliderPosition.bottom
     
+    private var targetViewHeight: NSLayoutConstraint?
     weak var targetView: UIView? {
         didSet {
+            targetView?.translatesAutoresizingMaskIntoConstraints = false
             targetView?.backgroundColor = backgroundColor
-            targetView?.snp.updateConstraints({$0.height.equalTo(height)})
+            targetViewHeight = targetView?.heightAnchor.constraint(equalToConstant: height)
+            targetViewHeight?.isActive = true
             targetView?.isHidden = hidden
             switch shape {
             case .line:
