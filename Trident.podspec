@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Trident'
-  s.version          = '0.3.0'
+  s.version          = '0.4.0'
   s.summary          = 'A MenuView For Aquaman'
   s.homepage         = 'https://github.com/bawn/Trident'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
@@ -20,5 +20,4 @@ Pod::Spec.new do |s|
   s.source_files     = ["Trident/*.swift", "Trident/Trident.h"]
   s.frameworks = 'UIKit'
   s.swift_version    = "4.2"
-  s.dependency 'SnapKit', '~> 4.2.0'
 end
