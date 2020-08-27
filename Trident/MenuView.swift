@@ -248,8 +248,12 @@ public class TridentMenuView: UIView {
                 , currentIndex >= 0 else {
                 return
             }
-            nextIndex = currentIndex == titles.count - 1 ? currentIndex - 1 : currentIndex + 1
-//            nextIndex = min(currentIndex + 1, titles.count - 1)
+            if currentIndex == titles.count - 1 {
+                let next = currentIndex - 1
+                nextIndex = next > 0 ? next : 0
+            } else {
+                nextIndex = currentIndex + 1
+            }
             currentLabel = menuItemViews[currentIndex]
         }
     }
