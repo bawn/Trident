@@ -28,7 +28,7 @@ import UIKit
 
 extension UIScrollView {
     func scrollToSuitablePosition(_ targetView: UIView?, _ animation: Bool) {
-        guard contentSize.width > bounds.width, let targetView = targetView else {
+        guard contentSize.width + contentInset.left + contentInset.right > bounds.width, let targetView = targetView else {
             return
         }
         let x = min(max(targetView.center.x - frame.midX, 0.0), contentSize.width - bounds.width)
